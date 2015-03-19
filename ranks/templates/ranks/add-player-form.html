@@ -1,0 +1,47 @@
+{% load staticfiles %}
+
+<!doctype html>
+
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<title>{{ series.name }}</title>
+		<link rel="stylesheet" href="{% static 'ranks/css/foundation.css' %}">
+		<link rel="stylesheet" href="{% static 'ranks/css/style.css' %}">
+		<script src="{% static 'ranks/js/vendor/modernizr.js' %}"></script>
+	</head>
+
+	<body>
+
+		<div class="header" >
+			<div class="row">
+				<div class="small-12 columns">
+					<h4>{{ series.name }}</h4>
+				</div>
+			</div>
+		</div>
+
+		<form action="{% url 'ranks:add-player' %}" method="POST">
+			{% csrf_token %}
+			<div class="row">
+				<div class="small-11 small-centered columns add-player">
+					<h6>First Name:</h6>
+					<input type="text" name="firstname">
+					<h6>Last Name:</h6>
+					<input type="text" name="lastname">
+					<input class="rank-button" type="submit" value="Add Player">
+				</div>
+			</div>
+		</form>
+
+		<script src="{% static 'ranks/js/vendor/jquery.js' %}"></script>
+		<script src="{% static 'ranks/js/foundation.min.js' %}"></script>
+		<script>
+			$(document).foundation();
+		</script>
+
+	</body>
+
+</html>

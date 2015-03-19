@@ -1,0 +1,100 @@
+{% load staticfiles %}
+
+<!doctype html>
+
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<title>{{ series.name }}</title>
+		<link rel="stylesheet" href="{% static 'ranks/css/foundation.css' %}">
+		<link rel="stylesheet" href="{% static 'ranks/css/style.css' %}">
+		<script src="{% static 'ranks/js/vendor/modernizr.js' %}"></script>
+	</head>
+
+	<body>
+
+		<div class="header" >
+			<div class="row">
+				<div class="small-12 columns">
+					<h4>{{ series.name }}</h4>
+				</div>
+			</div>
+		</div>
+
+		
+		<form action="{% url 'ranks:add-game' game_id %}" method="POST">
+			{% csrf_token %}
+			<div class="row">
+				<div class="small-11 columns small-centered regular-header">
+					<h6>Additional Buy Ins:</h6>
+				</div>
+				{% for player in players %}
+				<div class="small-11 columns small-centered add-player-card">
+					<input type="checkbox" name="buyin[]" value="{{ player.id }}">
+					<p>{{ player.first_name }} {{ player.get_last_initial }}.</p>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="row">
+				<div class="small-11 columns small-centered regular-header">
+					<h6>First Place:</h6>
+				</div>
+				{% for player in players %}
+				<div class="small-11 columns small-centered add-player-card">
+					<input type="radio" name="firstplace" value="{{ player.id }}">
+					<p>{{ player.first_name }} {{ player.get_last_initial }}.</p>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="row">
+				<div class="small-11 columns small-centered regular-header">
+					<h6>Second Place:</h6>
+				</div>
+				{% for player in players %}
+				<div class="small-11 columns small-centered add-player-card">
+					<input type="radio" name="secondplace" value="{{ player.id }}">
+					<p>{{ player.first_name }} {{ player.get_last_initial }}.</p>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="row">
+				<div class="small-11 columns small-centered regular-header">
+					<h6>Third Place:</h6>
+				</div>
+				{% for player in players %}
+				<div class="small-11 columns small-centered add-player-card">
+					<input type="radio" name="thirdplace" value="{{ player.id }}">
+					<p>{{ player.first_name }} {{ player.get_last_initial }}.</p>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="row">
+				<div class="small-11 columns small-centered regular-header">
+					<h6>Fourth Place:</h6>
+				</div>
+				{% for player in players %}
+				<div class="small-11 columns small-centered add-player-card">
+					<input type="radio" name="fourthplace" value="{{ player.id }}">
+					<p>{{ player.first_name }} {{ player.get_last_initial }}.</p>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="row">
+				<div class="small-12 columns continue-button">
+					<input type="submit" class="rank-button" value="Update Rankings">
+				</div>	
+			</div>	
+		</form>	
+		
+
+		<script src="{% static 'ranks/js/vendor/jquery.js' %}"></script>
+		<script src="{% static 'ranks/js/foundation.min.js' %}"></script>
+		<script>
+			$(document).foundation();
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,70 @@
+{% load staticfiles %}
+
+<!doctype html>
+
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<title>{{ series.name }}</title>
+		<link rel="stylesheet" href="{% static 'ranks/css/foundation.css' %}">
+		<link rel="stylesheet" href="{% static 'ranks/css/style.css' %}">
+		<script src="{% static 'ranks/js/vendor/modernizr.js' %}"></script>
+	</head>
+
+	<body>
+
+		<div class="header" >
+			<div class="row">
+				<div class="small-12 columns">
+					<h4>{{ series.name }}</h4>
+				</div>
+			</div>
+		</div>
+
+		
+		<form action="{% url 'ranks:add-game-places' %}" method="POST">
+			{% csrf_token %}
+			<div class="row">
+				<div class="small-11 columns small-centered regular-header">
+					<h6>Add Players:</h6>
+				</div>
+				{% for player in players %}
+				<div class="small-11 columns small-centered add-player-card">
+					<input type="checkbox" name="players[]" value="{{ player.id }}">
+					<p>{{ player.first_name }} {{ player.get_last_initial }}.</p>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="row">
+				<div class="small-11 small-centered columns add-player">
+					<h6>Buy In:</h6>
+					<input type="text" name="buyin" placeholder="e.g. $10, or 10, or 10.00">
+					<h6>First Place:</h6>
+					<input type="text" name="firstplace" placeholder="e.g. $50, or 50, or 50.00">
+					<h6>Second Place</h6>
+					<input type="text" name="secondplace" placeholder="e.g. $10, or 10, or 10.00">
+					<h6>Third Place</h6>
+					<input type="text" name="thirdplace" placeholder="e.g. $0, or 0, or 0.00">
+					<h6>Fourth Place</h6>
+					<input type="text" name="fourthplace" placeholder="e.g. $0, or 0, or 0.00">
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-12 columns continue-button">
+					<input type="submit" class="rank-button" value="Continue">
+				</div>	
+			</div>	
+		</form>	
+		
+
+		<script src="{% static 'ranks/js/vendor/jquery.js' %}"></script>
+		<script src="{% static 'ranks/js/foundation.min.js' %}"></script>
+		<script>
+			$(document).foundation();
+		</script>
+
+	</body>
+
+</html>
