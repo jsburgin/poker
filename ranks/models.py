@@ -112,7 +112,8 @@ class Player(models.Model):
 
 	def get_win_percentage(self):
 		try:
-			return str(float(self.first_places) / float(self.total_games_played) * 100)
+			percentage = float(self.first_places) / float(self.total_games_played)
+			return '{:.2f}'.format(percentage)
 		except:
 			return str(0)
 
