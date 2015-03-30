@@ -59,7 +59,7 @@ body {
 	clear: both;
 	color: #656565;
 	font-family: 'Roboto Condensed', sans-serif !important;
-	font-size: 13px;
+	font-size: 14px;
 	margin: 0;
 	text-transform: uppercase;
 }
@@ -160,6 +160,7 @@ body {
 
 h2.player-name {
 	font-weight: bold;
+	font-size: 22px;
 }
 
 }
