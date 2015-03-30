@@ -7,11 +7,11 @@ body {
 	max-width: 100%;
 	overflow-x: hidden; 
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	overflow: auto;
 }
 
 ::-webkit-scrollbar {
-	display: none;
+	visibility: hidden;
+	width: 0px;
 }
 
 .header-cont {
