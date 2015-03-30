@@ -17,39 +17,40 @@
 	</head>
 
 	<body>
-
-		<div class="header">
+		<div class="header-cont">
+			<div class="header">
+				<div class="row">
+					<div class="small-12 columns">
+						<div class="refresh-left">
+							<a href="{% url 'ranks:add-game-detail' %}"><i class="fa fa-plus"></i></a>
+						</div>
+						<div class="refresh">
+							<a href="/"><i class="fa fa-refresh"></i></a>
+						</div>
+						
+						<h4>{{ series.name }}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rank-content">
 			<div class="row">
-				<div class="small-12 columns">
-					<div class="refresh-left">
-						<a href="{% url 'ranks:add-game-detail' %}"><i class="fa fa-plus"></i></a>
+				{% for player in players %}
+				<div class="small-11 columns small-centered player-card">
+					<h1 class="player-rank">#{{ player.rank }}</h1>
+					<div class="player-stats">
+						<h2 class='player-name'>{{ player.first_name }} {{ player.get_last_initial }}.</h2>
+						<p>Score: {{ player.score }}</p>
+						<p>Career Earnings: {{ player.get_earnings }}</p>
+						<p>Total Wins: {{ player.first_places }}</p>
+						<p>2nd: {{ player.second_places }} | 3rd: {{ player.third_places }} | 4th: {{ player.fourth_places }}</p>
+						<p>Total Games Played: {{ player.total_games_played }}</p>
+						<p>Win Percentage: {{ player.get_win_percentage }}%</p>
 					</div>
-					<div class="refresh">
-						<a href="/"><i class="fa fa-refresh"></i></a>
-					</div>
-					
-					<h4>{{ series.name }}</h4>
 				</div>
+				{% endfor %}
 			</div>
 		</div>
-
-		<div class="row">
-			{% for player in players %}
-			<div class="small-11 columns small-centered player-card">
-				<h1 class="player-rank">#{{ player.rank }}</h1>
-				<div class="player-stats">
-					<h2 class='player-name'>{{ player.first_name }} {{ player.get_last_initial }}.</h2>
-					<p>Score: {{ player.score }}</p>
-					<p>Career Earnings: {{ player.get_earnings }}</p>
-					<p>Total Wins: {{ player.first_places }}</p>
-					<p>2nd: {{ player.second_places }} | 3rd: {{ player.third_places }} | 4th: {{ player.fourth_places }}</p>
-					<p>Total Games Played: {{ player.total_games_played }}</p>
-					<p>Win Percentage: {{ player.get_win_percentage }}%</p>
-				</div>
-			</div>
-			{% endfor %}
-		</div>
-
 		<a class="rank-button top" href="{% url 'ranks:add-player-detail' %}">Add Player</a>
 
 		<div class="push-10"></div>

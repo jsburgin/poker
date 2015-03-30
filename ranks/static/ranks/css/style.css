@@ -7,11 +7,28 @@ body {
 	max-width: 100%;
 	overflow-x: hidden; 
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	overflow: auto;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.header-cont {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	overflow: auto;
+	z-index: 1000;
 }
 
 .header {
 	background: #6B9ECA;
 	text-align: center;
+}
+
+.rank-content {
+	margin-top: 70px !important;
 }
 
 .header h4 {
