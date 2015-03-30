@@ -36,12 +36,13 @@
 		<div class="row">
 			{% for player in players %}
 			<div class="small-11 columns small-centered player-card">
-				<h1 class="player{{ player.rank }}">#{{ player.rank }}</h1>
+				<h1 class="player-rank">#{{ player.rank }}</h1>
 				<div class="player-stats">
-					<h2>{{ player.first_name }} {{ player.get_last_initial }}.</h2>
+					<h2 class='player-name'>{{ player.first_name }} {{ player.last_name }}.</h2>
 					<p>Score: {{ player.score }}</p>
 					<p>Career Earnings: {{ player.get_earnings }}</p>
 					<p>Total Wins: {{ player.first_places }}</p>
+					<p>2nd: {{ player.second_places }} | 3rd: {{ player.third_places }} | 4th: {{ player.fourth_places }}</p>
 					<p>Total Games Played: {{ player.total_games_played }}</p>
 					<p>Win Percentage: {{ player.get_win_percentage }}%</p>
 				</div>
