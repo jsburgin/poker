@@ -38,7 +38,7 @@
 			<div class="small-11 columns small-centered player-card">
 				<h1 class="player-rank">#{{ player.rank }}</h1>
 				<div class="player-stats">
-					<h2 class='player-name'>{{ player.first_name }} {{ player.last_name }}.</h2>
+					<h2 class='player-name'>{{ player.first_name }} {{ player.get_last_initial }}.</h2>
 					<p>Score: {{ player.score }}</p>
 					<p>Career Earnings: {{ player.get_earnings }}</p>
 					<p>Total Wins: {{ player.first_places }}</p>
