@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="{% static 'ranks/css/foundation.css' %}">
 		<link rel="stylesheet" href="{% static 'ranks/css/style.css' %}">
 		<link rel="apple-touch-icon" href="{% static 'ranks/img/icon.png' %}">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<script src="{% static 'ranks/js/vendor/modernizr.js' %}"></script>
 	</head>
@@ -20,6 +21,12 @@
 		<div class="header" >
 			<div class="row">
 				<div class="small-12 columns">
+					<div class="refresh-left">
+						<a href="/"><i class="fa fa-arrow-left"></i></a>
+					</div>
+					<div class="refresh-blank">
+						<i class="fa fa-home"></i>
+					</div>
 					<h4>{{ series.name }}</h4>
 				</div>
 			</div>

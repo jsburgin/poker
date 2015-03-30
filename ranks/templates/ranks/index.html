@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="{% static 'ranks/css/foundation.css' %}">
 		<link rel="stylesheet" href="{% static 'ranks/css/style.css' %}">
 		<link rel="apple-touch-icon" href="{% static 'ranks/img/icon.png' %}">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<script src="{% static 'ranks/js/vendor/modernizr.js' %}"></script>
 	</head>
@@ -20,6 +21,13 @@
 		<div class="header">
 			<div class="row">
 				<div class="small-12 columns">
+					<div class="refresh-left">
+						<a href="{% url 'ranks:add-game-detail' %}"><i class="fa fa-plus"></i></a>
+					</div>
+					<div class="refresh">
+						<a href="/"><i class="fa fa-refresh"></i></a>
+					</div>
+					
 					<h4>{{ series.name }}</h4>
 				</div>
 			</div>
@@ -28,9 +36,10 @@
 		<div class="row">
 			{% for player in players %}
 			<div class="small-11 columns small-centered player-card">
-				<h1>#{{ player.rank }}</h1>
+				<h1 class="player{{ player.rank }}">#{{ player.rank }}</h1>
 				<div class="player-stats">
 					<h2>{{ player.first_name }} {{ player.get_last_initial }}.</h2>
+					<p>Score: {{ player.score }}</p>
 					<p>Career Earnings: {{ player.get_earnings }}</p>
 					<p>Total Wins: {{ player.first_places }}</p>
 					<p>Total Games Played: {{ player.total_games_played }}</p>
@@ -40,8 +49,7 @@
 			{% endfor %}
 		</div>
 
-		<a class="rank-button" href="{% url 'ranks:add-game-detail' %}">Add Game</a>
-		<a class="rank-button" href="{% url 'ranks:add-player-detail' %}">Add Player</a>
+		<a class="rank-button top" href="{% url 'ranks:add-player-detail' %}">Add Player</a>
 
 		<div class="push-10"></div>
 

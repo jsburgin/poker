@@ -17,8 +17,12 @@ body {
 	color: #FFF;
 	font-family: 'PT Sans', sans-serif !important;
 	font-size: 16px;
-	margin: 0;
+	margin: 0 auto;
 	padding: 20px 0;
+	text-align: center !important;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .01rem;
 }
 
 .player-card {
@@ -108,6 +112,7 @@ body {
 
 .continue-button {
 	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .regular-header, .add-player {
@@ -124,6 +129,32 @@ body {
 
 .push-10 {
 	height: 10px;
+}
+
+.refresh, .refresh-blank {
+	float: right;
+}
+
+.refresh-left {
+	float: left;
+}
+
+.refresh i.fa, .refresh-left i.fa, .refresh-blank i.fa {
+	color: #fff !important;
+	padding: 19px 10px;
+	font-size: 22px;
+}
+
+.refresh-blank i.fa {
+	color: #6D9FC8 !important;
+}
+
+.rank-button.top {
+	margin-top: 5px;
+}
+
+h1.player1 {
+	
 }
 
 }
