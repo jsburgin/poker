@@ -5,13 +5,7 @@
 body {
 	font-family: 'Roboto Condensed', sans-serif !important;
 	max-width: 100%;
-	overflow-x: hidden; 
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-::-webkit-scrollbar {
-	visibility: hidden;
-	width: 0px;
 }
 
 .header-cont {
