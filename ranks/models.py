@@ -87,7 +87,25 @@ class Game(models.Model):
 		self.third_id = new_id
 
 	def update_fourth_id(self, new_id):
-		self.fourth_id = new_id			
+		self.fourth_id = new_id
+
+	def get_date(self):
+		return self.date_played.date()
+
+	def get_buy_in(self):
+		return '{:.2f}'.format(self.buy_in_amount)	
+
+	def get_first_earnings(self):
+		return '{:.2f}'.format(self.first_earnings)
+
+	def get_second_earnings(self):
+		return '{:.2f}'.format(self.second_earnings)
+
+	def get_third_earnings(self):
+		return '{:.2f}'.format(self.third_earnings)
+
+	def get_fourth_earnings(self):
+		return '{:.2f}'.format(self.fourth_earnings)	
 
 class Player(models.Model):
 	first_name = models.CharField(max_length=200)

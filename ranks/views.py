@@ -117,3 +117,17 @@ def add_game(request, game_id):
 	series.update_rankings()
 
 	return HttpResponseRedirect(reverse('ranks:index'))
+
+def game_viewer(request):
+	series = Series.objects.get(pk=1)
+	game_list = []
+	series_games_played = series.game_set.order_by('-id')
+	for game in series_games_played:
+		first = series.player_set.get(pk=game.first_id)
+		second = series.player_set.get(pk=game.second_id)
+		third = series.player_set.get(pk=game.third_id)
+		fourth = series.player_set.get(pk=game.fourth_id)
+		game_list.append([game, first, second, third, fourth])
+
+	context = {'games': game_list, 'series': series}	
+	return render(request, 'ranks/game-view.html', context)

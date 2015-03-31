@@ -35,28 +35,20 @@
 		</div>
 		<div class="rank-content">
 			<div class="row">
-				<div class="small-12 columns game-history">
-					<a class="game-link" href="/games">View Game History</a>
-				</div>
-			</div>
-			<div class="row">
-				{% for player in players %}
-				<div class="small-11 columns small-centered player-card">
-					<h1 class="player-rank">#{{ player.rank }}</h1>
-					<div class="player-stats">
-						<h2 class='player-name'>{{ player.first_name }} {{ player.get_last_initial }}.</h2>
-						<p>Score: {{ player.score }}</p>
-						<p>Career Earnings: {{ player.get_earnings }}</p>
-						<p>Total Wins: {{ player.first_places }}</p>
-						<p>2nd: {{ player.second_places }} | 3rd: {{ player.third_places }} | 4th: {{ player.fourth_places }}</p>
-						<p>Total Games Played: {{ player.total_games_played }}</p>
-						<p>Win Percentage: {{ player.get_win_percentage }}%</p>
+				<div class="small-12 columns">
+					{% for game in games %}
+					<div class="game-card">
+						<h2><strong>Game ID: {{ game.0.id }}</strong></h2>
+						<p>{{ game.0.get_date }} | Buy in: ${{ game.0.get_buy_in}}</p>
+						<p><strong>Winner:</strong> {{ game.1.first_name }} {{ game.1.get_last_initial}}. | ${{ game.0.get_first_earnings}}</p>
+						<p><strong>Second Place:</strong> {{ game.2.first_name }} {{ game.2.get_last_initial}}. | ${{ game.0.get_second_earnings}}</p>
+						<p><strong>Third Place:</strong> {{ game.3.first_name }} {{ game.3.get_last_initial}}. | ${{ game.0.get_third_earnings}}</p>
+						<p><strong>Fourth Place:</strong> {{ game.4.first_name }} {{ game.4.get_last_initial}}. | ${{ game.0.get_fourth_earnings}}</p>
 					</div>
+					{% endfor %}
 				</div>
-				{% endfor %}
 			</div>
 		</div>
-		<a class="rank-button top" href="{% url 'ranks:add-player-detail' %}">Add Player</a>
 
 		<div class="push-10"></div>
 
